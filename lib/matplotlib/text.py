@@ -177,6 +177,12 @@ class Text(Artist):
         # Update bbox last, as it depends on font properties.
         sentinel = object()  # bbox can be None, so use another sentinel.
         bbox = kwargs.pop("bbox", sentinel)
+        # Update fontproperties first, as additional kwargs can override
+        # some of its inner attributes
+        fpsentinel = object() # fontproperties can be None
+        fp = kwargs.pop("fontproperties", fpsentinel)
+        if fp is not fpsentinel:
+            self.set_fontproperties(fp)
         super().update(kwargs)
         if bbox is not sentinel:
             self.set_bbox(bbox)
