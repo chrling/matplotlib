@@ -33,6 +33,7 @@ def test_kwargs_order():
     changed = plt.xlabel("value", weight="bold", size=16, fontproperties="Comic Sans MS")
     assert original.get_size() == changed.get_size() 
     assert original.get_weight() == changed.get_weight()
+    assert original.get_fontproperties() == changed.get_fontproperties()
       
     #Test on text update
     text = txt.Text()
