@@ -19,16 +19,15 @@ def test_kwargs_order():
     
     #Data for tests
     data = np.random.randn(10000)
+    plt.hist(data, bins=40, facecolor="blue", edgecolor="black", alpha=0.5)
     
     #Case from bug report
-    plt.hist(data, bins=40, facecolor="blue", edgecolor="black", alpha=0.5)
     fp_first = plt.xlabel("value", fontproperties='SimHei',size=20)
     size_first = plt.ylabel("counts",size=20, fontproperties='SimHei')
     assert fp_first.get_size() == 20
     assert size_first.get_size() == 20
     
     #Test with multiple properties
-    plt.hist(data, bins=40, facecolor="red", edgecolor="blue", alpha=0.6)
     original = plt.xlabel("value", fontproperties="Comic Sans MS", weight="bold", size=16)
     changed = plt.xlabel("value", weight="bold", size=16, fontproperties="Comic Sans MS")
     assert original.get_size() == changed.get_size() 
@@ -43,10 +42,9 @@ def test_kwargs_order():
     assert text.get_weight() == "bold"
     
     #Acceptance Test
-    plt.hist(data, bins=40, facecolor="blue", edgecolor="black", alpha=0.5)
-    plt.xlabel("value", fontproperties='SimHei',size=20, color="red")
-    plt.ylabel("counts",size=20, color="red", fontproperties='SimHei')
-    plt.title("Test Graph", weight="bold", size=35, fontproperties="DejaVu Sans")
+    plt.xlabel("value", fontproperties='SimHei',size=20, style="italic")
+    plt.ylabel("counts",size=20, style="italic", fontproperties='SimHei')
+    plt.title("Test Graph", weight="bold", size=30, fontproperties="DejaVu Sans")
     plt.show()
 
 if __name__== "__main__":
